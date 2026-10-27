@@ -1,19 +1,29 @@
-# 演示录屏和操作说明
+# 演示视频怎么用
 
-这份录屏用于 GitHub 项目说明和面试展示：
+这是给 GitHub README 和面试展示用的录屏。
 
-- 演示视频：[enterprise-agent-workbench-demo.mp4](./enterprise-agent-workbench-demo.mp4)
-- 演示资料：`/tmp/enterprise-agent-demo/github-demo-knowledge.md`
-- 演示问题：`客户提交工单多久首次响应？请引用知识库依据。`
+先看视频：
 
 [![企业 AI Agent 工作台演示](./enterprise-agent-workbench-demo-cover.jpg)](./enterprise-agent-workbench-demo.mp4)
 
-## 本地启动
+视频里完整演示了四件事：
 
-分别启动后端和前端：
+1. 把一份 Markdown 知识文件导入知识库。
+2. 页面自动保存原文件、解析文本，并同步到 GitHub。
+3. 点击“一键验证”，系统自动做 RAG 检索和 Agent 运行。
+4. 页面展示 RAG 命中文档、Agent 回答和执行 Trace。
+
+## 本地怎么复现
+
+启动后端：
 
 ```bash
 python3 -m uvicorn backend.app.main:app --port 8010
+```
+
+启动前端：
+
+```bash
 VITE_API_BASE_URL=http://127.0.0.1:8010/api npm run dev:web -- --host 127.0.0.1 --port 5176 --strictPort
 ```
 
@@ -23,24 +33,32 @@ VITE_API_BASE_URL=http://127.0.0.1:8010/api npm run dev:web -- --host 127.0.0.1 
 http://127.0.0.1:5176/
 ```
 
-## 演示流程
+准备一份本地知识文件，例如：
 
-1. 打开工作台页面。
-2. 在右侧知识库区域粘贴本地文件路径，点击“从路径导入”。
-3. 确认页面出现“已导入”，并显示本地文件路径和 GitHub 同步状态。
-4. 在中间输入业务问题。
-5. 点击“一键跑通 / 一键验证”。
-6. 查看三步状态：检查知识库、诊断 RAG、运行 Agent。
-7. 查看 RAG 命中片段和 Agent 回答预览。
-8. 查看右侧执行 Trace，说明系统不是固定话术，而是完整执行链路。
+```text
+/tmp/enterprise-agent-demo/github-readme-demo-knowledge.md
+```
 
-## 面试讲法
+页面里这样操作：
 
-这个项目展示的是一个真实可运行的企业 Agent 工作台闭环：
+1. 右侧“知识库”区域，粘贴文件绝对路径。
+2. 点击“从路径导入”。
+3. 中间“业务问题”输入：`客户提交普通工单后多久首次响应？请引用知识库依据，并告诉我下一步该怎么处理。`
+4. 点击“一键跑通 / 一键验证”。
+5. 看“一键跑通”三步是否都完成。
+6. 看“RAG 命中”和“Agent 回答预览”。
+7. 看右侧“执行 Trace”。
 
-- 文档进入知识库后会保存原文件和解析文本。
-- 后端会把文本切成 chunk，并写入本地 SQLite 检索库。
-- RAG 诊断台可以在模型回答前确认是否命中文档。
-- 一键跑通会自动完成知识库检查、RAG 诊断和 Agent 运行。
-- Agent 输出会带依据、建议动作和可观测 Trace。
-- 知识库文件会同步到 GitHub，便于展示和复盘。
+## 面试时怎么讲
+
+可以这样说：
+
+> 这是一个企业 AI Agent 工作台，不是普通聊天页面。它支持把企业资料导入知识库，后端会解析文件、切 chunk、写入 SQLite 检索库。用户提问后，系统先做 RAG 检索，再把命中的资料交给大模型生成回答，同时保留完整执行 Trace。页面上的“一键跑通”可以直接证明这条链路是真实跑通的，不是写死的展示文案。
+
+重点强调这几个能力：
+
+- 知识库导入：原文件和解析文本都会保存。
+- RAG 诊断：回答前能看到命中了哪些资料。
+- Agent 执行：输出结论、依据和建议动作。
+- Trace 可观测：每一步执行过程都能看到。
+- GitHub 同步：知识库文件可随项目同步，方便展示。

@@ -2,13 +2,13 @@
 
 一个可本地运行的企业 AI Agent 工作台。它不是普通聊天框，也不是固定话术演示页；后端会把上传文档落到 SQLite，切分成 chunk，做本地向量检索，再把检索结果交给 OpenAI-compatible 大模型生成回答。
 
-如果你只想先跑起来，看这份：[快速使用指南](./docs/quickstart.md)。
-
-演示录屏和 GitHub 展示说明：[docs/demo/README.md](./docs/demo/README.md)。
-
-演示视频：[docs/demo/enterprise-agent-workbench-demo.mp4](./docs/demo/enterprise-agent-workbench-demo.mp4)。
+如果你只想先看效果，直接点下面的视频封面。
 
 [![企业 AI Agent 工作台演示](./docs/demo/enterprise-agent-workbench-demo-cover.jpg)](./docs/demo/enterprise-agent-workbench-demo.mp4)
+
+如果你想自己跑一遍，看这份：[快速使用指南](./docs/quickstart.md)。
+
+如果你想按录屏复现，看这份：[演示操作说明](./docs/demo/README.md)。
 
 ## 这个项目给谁看
 
@@ -18,7 +18,7 @@
 
 ## 一句话演示路径
 
-配置模型，导入知识库文件，打开页面，点击“一键跑通 / 一键验证”，然后看 RAG 命中、Agent 输出和右侧 Trace。
+导入一份知识库文件，输入业务问题，点击“一键跑通 / 一键验证”，然后看 RAG 命中、Agent 输出和右侧 Trace。
 
 这条链路会展示：
 
