@@ -1,5 +1,16 @@
 [
   {
+    "id": "doc-b263bf86f5d1",
+    "title": "github-readme-demo-knowledge.md",
+    "type": "MD",
+    "scope": "product",
+    "owner": "用户上传",
+    "updatedAt": "2026-10-27 14:19:51",
+    "source": "upload",
+    "filePath": "knowledge-base/uploads/doc-b263bf86f5d1_github-readme-demo-knowledge.md",
+    "textPath": "knowledge-base/extracted/doc-b263bf86f5d1_github-readme-demo-knowledge.txt"
+  },
+  {
     "id": "doc-e66e87012438",
     "title": "github-demo-knowledge.md",
     "type": "MD",
