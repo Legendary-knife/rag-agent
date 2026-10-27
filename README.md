@@ -2,13 +2,9 @@
 
 一个可本地运行的企业 AI Agent 工作台。它不是普通聊天框，也不是固定话术演示页；后端会把上传文档落到 SQLite，切分成 chunk，做本地向量检索，再把检索结果交给 OpenAI-compatible 大模型生成回答。
 
-如果你只想先看效果，直接点下面的视频封面。
-
-[![企业 AI Agent 工作台演示](./docs/demo/enterprise-agent-workbench-demo-cover.jpg)](./docs/demo/enterprise-agent-workbench-demo.mp4)
-
 如果你想自己跑一遍，看这份：[快速使用指南](./docs/quickstart.md)。
 
-如果你想按录屏复现，看这份：[演示操作说明](./docs/demo/README.md)。
+如果你想知道怎么向别人演示 RAG 和 Agent，看这份：[演示讲法](./docs/demo/README.md)。
 
 ## 这个项目给谁看
 
@@ -100,7 +96,7 @@ http://127.0.0.1:8000/docs
 4. 点击“一键跑通”里的“一键验证”。
 5. 三步都通过后，再查看“Agent 输出”和右侧“执行 Trace”。
 
-如果要按录屏里的固定端口启动：
+如果要按固定端口启动：
 
 ```bash
 python3 -m uvicorn backend.app.main:app --port 8010
