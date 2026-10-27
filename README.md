@@ -4,6 +4,12 @@
 
 如果你只想先跑起来，看这份：[快速使用指南](./docs/quickstart.md)。
 
+演示录屏和 GitHub 展示说明：[docs/demo/README.md](./docs/demo/README.md)。
+
+演示视频：[docs/demo/enterprise-agent-workbench-demo.mp4](./docs/demo/enterprise-agent-workbench-demo.mp4)。
+
+[![企业 AI Agent 工作台演示](./docs/demo/enterprise-agent-workbench-demo-cover.jpg)](./docs/demo/enterprise-agent-workbench-demo.mp4)
+
 ## 这个项目给谁看
 
 - 给招聘方看：证明你做过真实可运行的企业 Agent 产品雏形。
@@ -12,7 +18,7 @@
 
 ## 一句话演示路径
 
-配置模型，上传知识库文件，打开页面，选择“供应链 Agent”，点击“运行 Agent”，然后看右侧 Trace。
+配置模型，导入知识库文件，打开页面，点击“一键跑通 / 一键验证”，然后看 RAG 命中、Agent 输出和右侧 Trace。
 
 这条链路会展示：
 
@@ -93,6 +99,19 @@ http://127.0.0.1:8000/docs
 3. 中间输入业务问题。
 4. 点击“一键跑通”里的“一键验证”。
 5. 三步都通过后，再查看“Agent 输出”和右侧“执行 Trace”。
+
+如果要按录屏里的固定端口启动：
+
+```bash
+python3 -m uvicorn backend.app.main:app --port 8010
+VITE_API_BASE_URL=http://127.0.0.1:8010/api npm run dev:web -- --host 127.0.0.1 --port 5176 --strictPort
+```
+
+然后打开：
+
+```text
+http://127.0.0.1:5176/
+```
 
 输入不同问题会触发不同重点。比如知识库场景里，问“海外渠道商能不能申请账期？”会走账期审批；问“A100 控制器有哪些产品参数和合规限制？”会走产品资料。
 
